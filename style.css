@@ -45,6 +45,15 @@ body{
     border-radius: 1rem;
     margin: 1rem 1rem 1rem 0;
 }
+#order .x{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 0 7rem;
+    cursor: pointer;
+}
+#order .x:hover{
+    color: var(--font-hover);
+}
 .navbar button{
     color:  white !important;
 }

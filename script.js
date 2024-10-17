@@ -6,8 +6,11 @@ let Menu = document.querySelectorAll('#photo')
 let add_to_cart = document.querySelectorAll('#btn')
 let TotalValue = document.querySelector('.value')
 let total = document.querySelector('.total')
+let log = document.querySelector('.log')
 let TotalPrice = 0
-console.log(Menu)
+log.addEventListener('click',()=>{
+  window.location.href = 'index.html';
+})
 cart.addEventListener('click',()=>{
   if(order.style.display == 'block'){
     order.style.display = 'none'
@@ -23,6 +26,9 @@ function AddToCart(imgsrc,name,price,Total){
         let photoDes = document.createElement('div')
         let p = document.createElement('p')
         let div = document.createElement('div')
+        let x = document.createElement('p')
+        x.textContent ='x'
+        x.classList.add('x')
         div.classList.add('order')
         p.textContent = price+'$'
         h2.textContent = name
@@ -33,6 +39,13 @@ function AddToCart(imgsrc,name,price,Total){
         photoDes.appendChild(h2)
         photoDes.appendChild(p)
         div.appendChild(photoDes)
+        div.appendChild(x)
+
+        x.addEventListener('click',()=>{
+          div.style.display = 'none'
+          TotalPrice -= parseInt(price)
+          total.innerHTML = `${TotalPrice}$`
+        })
 }
 Menu.forEach((span)=>{
         let pro = span.children[0].src
@@ -43,17 +56,8 @@ Menu.forEach((span)=>{
         
         btn.addEventListener('click', ()=>{
           alert('item added')
-          TotalPrice += +(price)
+          TotalPrice += parseInt(price)
           AddToCart(pro,name,price)
           total.innerHTML = `${TotalPrice}$`
         })
 })
-// add_to_cart.forEach((btn)=>
-//   btn.addEventListener('click',()=>{
-//         let pro = span.children[0].src
-//         let btn = span.children[1].children[1]
-//         let name = span.children[1].children[0].textContent
-//     order.style.display = 'block'
-//     AddToCart(pro,name,price)
-//   })
-// )

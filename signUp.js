@@ -1,4 +1,17 @@
 const user = JSON.parse(localStorage.getItem('user'));
+let S_log = document.querySelector('#have-acc')
+let L_sgin = document.querySelector('p span')
+console.log(L_sgin);
+
+let log = ()=>{
+  window.location.href = 'signUp.html';
+}
+L_sgin.addEventListener('click',()=>{
+  window.location.href = 'signUp.html';
+})
+S_log.addEventListener('click',()=>{
+  window.location.href = 'index.html';
+})
 console.log(user); 
 document.getElementById('signupForm').addEventListener('submit', function(event) {
   event.preventDefault();
@@ -14,7 +27,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     alert('Signup successful! Your data has been saved to local storage.');
     // Optionally reset the form after saving
     document.getElementById('signupForm').reset();
-    window.location.href = 'index.html';
+    window.location.href = 'Home.html';
   }
 });
 
@@ -64,7 +77,7 @@ function login() {
   
   if (user.email == email.value && user.password == password.value) {
     localStorage.setItem('loggedIn', 'true');
-    window.location.href = 'index.html';
+    window.location.href = 'Home.html';
   } else {
     alert('password is wrong');
   }
